@@ -1,17 +1,43 @@
-# jose_cast_suite
+plugins {
+    id("com.android.application")
+    id("kotlin-android")
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id("dev.flutter.flutter-gradle-plugin")
+}
 
-A new Flutter project.
+android {
+    namespace = "io.github.josecastsuite.josecast"
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
 
-## Getting Started
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 
-This project is a starting point for a Flutter application.
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_17.toString()
+    }
 
-A few resources to get you started if this is your first Flutter project:
+    defaultConfig {
+        // F-Droid uyumlu unique Application ID
+        applicationId = "io.github.josecastsuite.josecast"
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+    buildTypes {
+        release {
+            // F-Droid kendi imzasını atar, debug signing kaldırıldı
+            minifyEnabled false
+            shrinkResources false
+            // signingConfig satırı yok - F-Droid için gerekli
+        }
+    }
+}
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+flutter {
+    source = "../.."
+}
