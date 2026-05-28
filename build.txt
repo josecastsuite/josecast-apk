@@ -1,0 +1,7 @@
+cd C:\Users\Yusuf\Desktop\Diyetisyen_app
+flet build apk --build-number 1 --build-version 1.0.0
+
+
+TSH
+HEMOGLOBAN A1C
+OGTT 
